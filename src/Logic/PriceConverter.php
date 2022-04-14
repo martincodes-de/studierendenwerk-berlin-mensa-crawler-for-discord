@@ -6,24 +6,24 @@ namespace src\Logic;
 
 final class PriceConverter
 {
-    public static function getPriceForStudents($prices): string {
-        $cleanedPrices = self::getCleanedPrices($prices);
-        $priceList = self::getSinglePrices($cleanedPrices);
+    public function getPriceForStudents($prices): string {
+        $cleanedPrices = $this->getCleanedPrices($prices);
+        $priceList = $this->getSinglePrices($cleanedPrices);
         $priceForStudents = $priceList[0];
-        return self::getPriceWithEuroSign($priceForStudents);
+        return $this->getPriceWithEuroSign($priceForStudents);
     }
 
-    private static function getCleanedPrices(string $prices): string
+    private function getCleanedPrices(string $prices): string
     {
         return str_replace("€ ", "", $prices);
     }
 
-    private static function getSinglePrices(string $prices): array
+    private function getSinglePrices(string $prices): array
     {
         return explode("/", $prices);
     }
 
-    private static function getPriceWithEuroSign(string $price): string
+    private function getPriceWithEuroSign(string $price): string
     {
         return "{$price}€";
     }
