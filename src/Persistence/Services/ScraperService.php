@@ -21,13 +21,13 @@ class ScraperService
 
         $scrapedMeals = [];
 
-        $meals->each(function($node) {
+        $meals->each(function($node) use (&$scrapedMeals) {
             $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
             $mealPrices = $node->filter("div.text-right")->text();
 
             $scrapedMeals[] = [
                 "title" => $mealTitle,
-                "prices" => $mealPrices
+                "prices" => $mealPrices,
             ];
         });
 
