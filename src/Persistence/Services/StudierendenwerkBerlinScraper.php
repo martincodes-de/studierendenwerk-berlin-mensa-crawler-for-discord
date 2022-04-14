@@ -6,7 +6,7 @@ namespace src\Persistence\Services;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class ScraperService
+class StudierendenwerkBerlinScraper
 {
     public function __construct(
         private Crawler $crawler,

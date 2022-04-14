@@ -250,5 +250,5 @@ return array(
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'src\\Logic\\Model\\Meal' => $baseDir . '/src/Logic/Model/Meal.php',
     'src\\Logic\\PriceConverter' => $baseDir . '/src/Logic/PriceConverter.php',
-    'src\\Persistence\\Services\\ScraperService' => $baseDir . '/src/Persistence/Services/ScraperService.php',
+    'src\\Persistence\\Services\\StudierendenwerkBerlinScraper' => $baseDir . '/src/Persistence/Services/StudierendenwerkBerlinScraper.php',
 );
