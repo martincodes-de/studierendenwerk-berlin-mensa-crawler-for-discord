@@ -6,7 +6,8 @@
     },
     "autoload": {
         "psr-4": {
-            "src\\Presentation\\": "src/Presentation/"
+            "src\\Presentation\\": "src/Presentation/",
+            "src\\Persistence\\\\": "src/Persistence/",
         }
     }
 }

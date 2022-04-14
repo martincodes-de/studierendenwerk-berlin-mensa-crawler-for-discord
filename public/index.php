@@ -2,6 +2,7 @@
 
 use Goutte\Client;
 use src\Presentation\PriceConverter;
+use src\Presentation\ViewModel\Meal;
 
 require_once "../vendor/autoload.php";
 
@@ -14,7 +15,6 @@ $meals = $mainMealsSection->filter(".splMeal");
 $meals->each(function($node) {
     $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
     $mealPrices = $node->filter("div.text-right")->text();
-    var_dump($mealTitle, PriceConverter::getPriceForStudents($mealPrices));
-});
 
-echo "Test";
+    $meal = new Meal($mealTitle, PriceConverter::getPriceForStudents($mealPrices));
+});
