@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Presentation;
+namespace src\Logic;
 
 final class PriceConverter
 {
