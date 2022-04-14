@@ -1,0 +1,12 @@
+{
+    "require": {
+        "fabpot/goutte": "^4.0",
+        "symfony/dom-crawler": "^6.0",
+        "symfony/css-selector": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "src\\Presentation\\": "src/Presentation/"
+        }
+    }
+}
