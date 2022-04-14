@@ -248,5 +248,7 @@ return array(
     'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Normalizer.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
+    'src\\Persistence\\Services\\ScraperService' => $baseDir . '/src/Persistence/Services/ScraperService.php',
     'src\\Presentation\\PriceConverter' => $baseDir . '/src/Presentation/PriceConverter.php',
+    'src\\Presentation\\ViewModel\\Meal' => $baseDir . '/src/Presentation/ViewModel/Meal.php',
 );

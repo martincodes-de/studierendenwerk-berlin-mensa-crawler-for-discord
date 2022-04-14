@@ -18,6 +18,7 @@ class ComposerStaticInitfdd7ea03e91236be75b3dc1aa4a8040c
         's' => 
         array (
             'src\\Presentation\\' => 17,
+            'src\\Persistence\\' => 16,
         ),
         'S' => 
         array (
@@ -49,6 +50,10 @@ class ComposerStaticInitfdd7ea03e91236be75b3dc1aa4a8040c
         'src\\Presentation\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Presentation',
+        ),
+        'src\\Persistence\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Persistence',
         ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
@@ -355,7 +360,9 @@ class ComposerStaticInitfdd7ea03e91236be75b3dc1aa4a8040c
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
+        'src\\Persistence\\Services\\ScraperService' => __DIR__ . '/../..' . '/src/Persistence/Services/ScraperService.php',
         'src\\Presentation\\PriceConverter' => __DIR__ . '/../..' . '/src/Presentation/PriceConverter.php',
+        'src\\Presentation\\ViewModel\\Meal' => __DIR__ . '/../..' . '/src/Presentation/ViewModel/Meal.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
