@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace src\Logic\Converter;
 
 use src\Logic\Model\Meal;
 
-class MealConverter
+final class MealConverter
 {
     public function convertToMeal(array $meal): Meal
     {

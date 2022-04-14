@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace src\Logic\Model;
 
-class Meal
+final class Meal
 {
     public function __construct(
         public readonly string $meal,
