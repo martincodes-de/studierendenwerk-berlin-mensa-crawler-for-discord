@@ -7,7 +7,7 @@ namespace src\Logic\Model;
 final class Meal
 {
     public function __construct(
-        public readonly string $meal,
+        public readonly string $title,
         public readonly string $price,
     )
     {

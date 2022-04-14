@@ -16,7 +16,7 @@ final class MealConverter
 
     public function convertToMeal(array $meal): Meal
     {
-        $priceForStudents = $this->priceConverter->getPriceForStudents($meal["price"]);
+        $priceForStudents = $this->priceConverter->getPriceForStudents($meal["prices"]);
         return new Meal($meal["title"], $priceForStudents);
     }
 }
