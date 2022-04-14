@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Presentation\ViewModel;
+namespace src\Logic\Model;
 
 class Meal
 {
