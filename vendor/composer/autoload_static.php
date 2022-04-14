@@ -366,7 +366,7 @@ class ComposerStaticInitfdd7ea03e91236be75b3dc1aa4a8040c
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'src\\Logic\\Model\\Meal' => __DIR__ . '/../..' . '/src/Logic/Model/Meal.php',
-        'src\\Logic\\PriceConverter' => __DIR__ . '/../..' . '/src/Logic/PriceConverter.php',
+        'src\\Logic\\Converter\\PriceConverter' => __DIR__ . '/../..' . '/src/Logic/PriceConverter.php',
         'src\\Persistence\\Services\\StudierendenwerkBerlinScraper' => __DIR__ . '/../..' . '/src/Persistence/Services/StudierendenwerkBerlinScraper.php',
     );
 

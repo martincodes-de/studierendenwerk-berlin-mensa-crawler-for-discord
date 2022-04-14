@@ -249,6 +249,6 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'src\\Logic\\Model\\Meal' => $baseDir . '/src/Logic/Model/Meal.php',
-    'src\\Logic\\PriceConverter' => $baseDir . '/src/Logic/PriceConverter.php',
+    'src\\Logic\\Converter\\PriceConverter' => $baseDir . '/src/Logic/PriceConverter.php',
     'src\\Persistence\\Services\\StudierendenwerkBerlinScraper' => $baseDir . '/src/Persistence/Services/StudierendenwerkBerlinScraper.php',
 );

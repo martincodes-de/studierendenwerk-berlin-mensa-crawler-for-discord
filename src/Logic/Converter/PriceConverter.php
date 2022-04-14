@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src\Logic;
+namespace src\Logic\Converter;
 
 final class PriceConverter
 {
