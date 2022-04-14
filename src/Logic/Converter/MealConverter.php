@@ -8,8 +8,15 @@ use src\Logic\Model\Meal;
 
 final class MealConverter
 {
+    public function __construct(
+        private PriceConverter $priceConverter
+    )
+    {
+    }
+
     public function convertToMeal(array $meal): Meal
     {
-        return new Meal($meal["title"], $meal["price"]);
+        $priceForStudents = $this->priceConverter->getPriceForStudents($meal["price"]);
+        return new Meal($meal["title"], $priceForStudents);
     }
 }
