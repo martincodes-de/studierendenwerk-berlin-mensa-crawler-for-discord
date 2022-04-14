@@ -17,20 +17,20 @@ class ScraperService
     public function scrapeMainMeals()
     {
         $mainMealsSection = $this->crawler->filter("div.splGroupWrapper:nth-child(6)");
-        $meals = $mainMealsSection->filter(".splMeal");
+        $rawMeals = $mainMealsSection->filter(".splMeal");
 
-        $scrapedMeals = [];
+        $meals = [];
 
-        $meals->each(function($node) use (&$scrapedMeals) {
+        $rawMeals->each(function($node) use (&$meals) {
             $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
             $mealPrices = $node->filter("div.text-right")->text();
 
-            $scrapedMeals[] = [
+            $meals[] = [
                 "title" => $mealTitle,
                 "prices" => $mealPrices,
             ];
         });
 
-        return $scrapedMeals;
+        return $meals;
     }
 }
