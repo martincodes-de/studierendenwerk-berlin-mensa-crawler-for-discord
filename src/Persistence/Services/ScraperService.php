@@ -13,7 +13,7 @@ class ScraperService
     {
     }
 
-    public function scrapeMainMeals(): array {
+    public function scrapeMainMeals() {
         $mainMealsSection = $this->crawler->filter("div.splGroupWrapper:nth-child(6)");
         $meals = $mainMealsSection->filter(".splMeal");
 
@@ -21,7 +21,14 @@ class ScraperService
             $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
             $mealPrices = $node->filter("div.text-right")->text();
 
-            $meal = new Meal($mealTitle, PriceConverter::getPriceForStudents($mealPrices));
+            $this->meals[] = [
+                "title" => $mealTitle,
+                "prices" => $mealPrices
+            ];
         });
+    }
+
+    public function getMeals(): array {
+        return $this->meals;
     }
 }
