@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace src\Presentation;
 
 use GuzzleHttp\Client;
@@ -18,7 +20,10 @@ class DiscordWebhookSender
     public function sendWebhook(): void {
         $this->httpClient->post($this->webHookUrl, [
             "form_params" => [
-                "content" => $this->generateContentLine()
+                "content" => $this->generateContentLine(),
+                "embeds" => [
+                    ["fields" => $this->generateEmbed($this->meals)]
+                ]
             ]
         ]);
     }
@@ -26,8 +31,20 @@ class DiscordWebhookSender
     private function generateContentLine(): string
     {
         $date = date("d.m.Y");
+        return "[P] Hauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee:";
+    }
 
-        return "[P] Hauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee";
+    private function generateEmbed(array $meals) {
+        $mealFields = [];
+
+        foreach ($meals as $meal) {
+            $mealFields[] = [
+                "name" => $meal->title,
+                "value" => $meal->price,
+            ];
+        }
+
+        return $mealFields;
     }
 
 
