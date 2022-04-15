@@ -6,6 +6,8 @@ use src\Logic\Converter\MealConverter;
 use src\Persistence\ConfigurationDataSource;
 use src\Persistence\Exceptions\NoMealsScrapedException;
 use src\Persistence\MensaHTWTreskowalleeScraper;
+use src\Presentation\Logger\Logger;
+use src\Presentation\Logger\LogMessageType;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class ApplicationRunner
@@ -15,6 +17,7 @@ final class ApplicationRunner
         private MealConverter $mealConverter,
         private DiscordWebhookSender $discordWebhookSender,
         private ConfigurationDataSource $configuration,
+        private Logger $logger,
     )
     {
         date_default_timezone_set("Europe/Berlin");
@@ -33,7 +36,7 @@ final class ApplicationRunner
 
             $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getScrapedWebsiteUrl());
         } catch (NoMealsScrapedException $e) {
-            
+            $this->logger->write(LogMessageType::ERROR, $e->getMessage());
         }
     }
 
