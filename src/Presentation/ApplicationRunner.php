@@ -27,6 +27,12 @@ class ApplicationRunner
         if (count($scrapedMeals) < 1) {
             throw new \Exception("No meals scraped.");
         }
+
+        $meals = array_map(function($meal) {
+            return $this->mealConverter->convertToMeal($meal);
+        }, $scrapedMeals);
+
+        
     }
 
     private function isWeekday(string $day): bool
