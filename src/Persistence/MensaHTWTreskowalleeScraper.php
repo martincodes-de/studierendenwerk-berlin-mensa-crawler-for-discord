@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace src\Persistence;
 
+use src\Persistence\Exceptions\NoMealsScrapedException;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class MensaHTWTreskowalleeScraper
@@ -14,10 +15,17 @@ final class MensaHTWTreskowalleeScraper
     {
     }
 
+    /**
+     * @throws NoMealsScrapedException
+     */
     public function scrapeMainMeals()
     {
         $mainMealsSection = $this->crawler->filter("div.splGroupWrapper:nth-child(6)");
         $rawMeals = $mainMealsSection->filter(".splMeal");
+
+        if ($rawMeals->count() < 1) {
+            throw new NoMealsScrapedException("No meals scraped.");
+        }
 
         $meals = [];
 
