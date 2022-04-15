@@ -17,7 +17,7 @@ final class DiscordWebhookSender
     {
     }
 
-    public function sendWebhook(array $meals): void
+    public function sendWebhook(array $meals, $mealPlanUrl): void
     {
         $this->httpClient->post($this->webHookUrl, [
             "json" => [
@@ -26,7 +26,9 @@ final class DiscordWebhookSender
                         "title" => $this->generateContentLine(),
                         "description" => $this->generateDescriptionLine(),
                         "color" => $this->selectRandomColorForEmbed(),
+                        "author" => $this->generateAuthor($mealPlanUrl),
                         "fields" => $this->generateEmbedFields($meals),
+                        "footer" => $this->generateFooter(),
                     ]
                 ]
             ]
@@ -78,5 +80,19 @@ final class DiscordWebhookSender
         return $mealFields;
     }
 
+    private function generateAuthor($mealPlanWebsite): array
+    {
+        return [
+            "name" => "studierendenWERK BERLIN",
+            "url" => $mealPlanWebsite,
+            "icon_url" => "https://www.stw.berlin/favicon.ico",
+        ];
+    }
 
+
+    private function generateFooter(): array {
+        return [
+            "text" => "Klicke auf \"studierendenWERK BERLIN\", um zum ganzen Speiseplan zu kommen.",
+        ];
+    }
 }
