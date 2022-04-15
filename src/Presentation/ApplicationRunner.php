@@ -4,6 +4,7 @@ namespace src\Presentation;
 
 use src\Logic\Converter\MealConverter;
 use src\Persistence\ConfigurationDataSource;
+use src\Persistence\Exceptions\NoMealsScrapedException;
 use src\Persistence\MensaHTWTreskowalleeScraper;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -23,17 +24,17 @@ final class ApplicationRunner
         $dayAsWord = date("l");
         if (!$this->isWeekday($dayAsWord)) return;
 
-        $scrapedMeals = $this->scraper->scrapeMainMeals();
+        try {
+            $scrapedMeals = $this->scraper->scrapeMainMeals();
 
-        if (count($scrapedMeals) < 1) {
-            throw new \Exception("No meals scraped.");
+            $meals = array_map(function($meal) {
+                return $this->mealConverter->convertToMeal($meal);
+            }, $scrapedMeals);
+
+            $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getScrapedWebsiteUrl());
+        } catch (NoMealsScrapedException $e) {
+            
         }
-
-        $meals = array_map(function($meal) {
-            return $this->mealConverter->convertToMeal($meal);
-        }, $scrapedMeals);
-
-        $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getScrapedWebsiteUrl());
     }
 
     private function isWeekday(string $day): bool
