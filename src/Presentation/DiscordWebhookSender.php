@@ -17,12 +17,15 @@ class DiscordWebhookSender
     {
     }
 
-    public function sendWebhook(): void {
+    public function sendWebhook(): void
+    {
         $this->httpClient->post($this->webHookUrl, [
             "form_params" => [
                 "content" => $this->generateContentLine(),
                 "embeds" => [
-                    ["fields" => $this->generateEmbed($this->meals)]
+                    [
+                        "fields" => $this->generateEmbedFields($this->meals)
+                    ]
                 ]
             ]
         ]);
@@ -31,10 +34,11 @@ class DiscordWebhookSender
     private function generateContentLine(): string
     {
         $date = date("d.m.Y");
-        return "[P] Hauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee:";
+        return "Hauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n";
     }
 
-    private function generateEmbed(array $meals) {
+    private function generateEmbedFields(array $meals): array
+    {
         $mealFields = [];
 
         foreach ($meals as $meal) {

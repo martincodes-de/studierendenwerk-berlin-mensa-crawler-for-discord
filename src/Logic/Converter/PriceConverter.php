@@ -6,7 +6,8 @@ namespace src\Logic\Converter;
 
 final class PriceConverter
 {
-    public function getPriceForStudents($prices): string {
+    public function getPriceForStudents($prices): string
+    {
         $cleanedPrices = $this->getCleanedPrices($prices);
         $priceList = $this->getSinglePrices($cleanedPrices);
         $priceForStudents = $priceList[0];
