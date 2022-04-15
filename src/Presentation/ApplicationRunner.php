@@ -7,7 +7,7 @@ use src\Persistence\ConfigurationDataSource;
 use src\Persistence\MensaHTWTreskowalleeScraper;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ApplicationRunner
+final class ApplicationRunner
 {
     public function __construct(
         private MensaHTWTreskowalleeScraper $scraper,
