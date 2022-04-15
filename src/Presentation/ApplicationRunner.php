@@ -8,7 +8,6 @@ use src\Persistence\Exceptions\NoMealsScrapedException;
 use src\Persistence\MensaHTWTreskowalleeScraper;
 use src\Presentation\Logger\Logger;
 use src\Presentation\Logger\LogMessageType;
-use Symfony\Component\DomCrawler\Crawler;
 
 final class ApplicationRunner
 {
