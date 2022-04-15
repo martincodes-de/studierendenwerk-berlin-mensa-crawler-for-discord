@@ -25,6 +25,7 @@ final class DiscordWebhookSender
                     [
                         "title" => $this->generateContentLine(),
                         "description" => $this->generateDescriptionLine(),
+                        "color" => $this->selectRandomColorForEmbed(),
                         "fields" => $this->generateEmbedFields($meals),
                     ]
                 ]
@@ -41,6 +42,22 @@ final class DiscordWebhookSender
     {
         $date = date("d.m.Y");
         return "für den {$date}";
+    }
+
+    private function selectRandomColorForEmbed(): int|float
+    {
+        $colors = [
+            "blue" => "#4287f5",
+            "red" => "#f54242",
+            "green" => "#42f545",
+            "orange" => "#f5bf42",
+            "pink" => "#f542ad",
+            "turquoise" => "#42f5f5",
+        ];
+
+        $selectedColorKey = array_rand($colors);
+
+        return hexdec($colors[$selectedColorKey]);
     }
 
     /**
