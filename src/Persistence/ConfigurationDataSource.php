@@ -3,6 +3,7 @@
 namespace src\Persistence;
 
 use Exception;
+use src\Persistence\Exceptions\ConfigurationLoadingException;
 
 final class ConfigurationDataSource
 {
@@ -34,7 +35,7 @@ final class ConfigurationDataSource
         $configuration = parse_ini_file($configUrl);
 
         if ($configuration === false) {
-            throw new Exception("Configuration.ini can't be loaded.");
+            throw new ConfigurationLoadingException("Configuration.ini can't be loaded.");
         }
 
         return $configuration;
