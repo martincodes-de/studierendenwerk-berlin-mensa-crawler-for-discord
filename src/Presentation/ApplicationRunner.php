@@ -12,7 +12,7 @@ class ApplicationRunner
     public function __construct(
         private MensaHTWTreskowalleeScraper $scraper,
         private MealConverter $mealConverter,
-        private ConfigurationDataSource $configuration,
+        private DiscordWebhookSender $discordWebhookSender,
     )
     {
         date_default_timezone_set("Europe/Berlin");
@@ -32,7 +32,7 @@ class ApplicationRunner
             return $this->mealConverter->convertToMeal($meal);
         }, $scrapedMeals);
 
-        
+        $this->discordWebhookSender->sendWebhook($meals);
     }
 
     private function isWeekday(string $day): bool
