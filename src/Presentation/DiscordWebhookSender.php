@@ -7,7 +7,7 @@ namespace src\Presentation;
 use GuzzleHttp\Client;
 use src\Logic\Model\Meal;
 
-class DiscordWebhookSender
+final class DiscordWebhookSender
 {
     public function __construct
     (
