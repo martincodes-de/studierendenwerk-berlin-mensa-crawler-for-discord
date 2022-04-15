@@ -21,10 +21,10 @@ final class DiscordWebhookSender
     {
         $this->httpClient->post($this->webHookUrl, [
             "json" => [
-                "content" => $this->generateContentLine(),
                 "embeds" => [
                     [
-                        "fields" => $this->generateEmbedFields($meals)
+                        "title" => $this->generateContentLine(),
+                        "fields" => $this->generateEmbedFields($meals),
                     ]
                 ]
             ]
