@@ -24,6 +24,7 @@ final class DiscordWebhookSender
                 "embeds" => [
                     [
                         "title" => $this->generateContentLine(),
+                        "description" => $this->generateDescriptionLine(),
                         "fields" => $this->generateEmbedFields($meals),
                     ]
                 ]
@@ -33,8 +34,13 @@ final class DiscordWebhookSender
 
     private function generateContentLine(): string
     {
+        return "\n\nHauptgerichte der HTW-Mensa Treskowallee";
+    }
+
+    private function generateDescriptionLine(): string
+    {
         $date = date("d.m.Y");
-        return "\n\nHauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n";
+        return "für den {$date}";
     }
 
     /**
