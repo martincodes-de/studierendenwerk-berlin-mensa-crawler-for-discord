@@ -4,7 +4,7 @@ namespace src\Persistence;
 
 use Exception;
 
-class ConfigurationDataSource
+final class ConfigurationDataSource
 {
     private string $configurationUrl = __DIR__."/../../config.ini";
     private ?string $scrapedWebsiteUrl = null;
