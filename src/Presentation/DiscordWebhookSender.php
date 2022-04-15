@@ -11,20 +11,19 @@ class DiscordWebhookSender
     public function __construct
     (
         private readonly string $webHookUrl,
-        private array $meals,
         private Client $httpClient,
     )
     {
     }
 
-    public function sendWebhook(): void
+    public function sendWebhook(array $meals): void
     {
         $this->httpClient->post($this->webHookUrl, [
             "form_params" => [
                 "content" => $this->generateContentLine(),
                 "embeds" => [
                     [
-                        "fields" => $this->generateEmbedFields($this->meals)
+                        "fields" => $this->generateEmbedFields($meals)
                     ]
                 ]
             ]
