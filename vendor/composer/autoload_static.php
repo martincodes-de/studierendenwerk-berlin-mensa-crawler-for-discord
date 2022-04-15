@@ -501,8 +501,13 @@ class ComposerStaticInitfdd7ea03e91236be75b3dc1aa4a8040c
         'src\\Logic\\Converter\\PriceConverter' => __DIR__ . '/../..' . '/src/Logic/Converter/PriceConverter.php',
         'src\\Logic\\Model\\Meal' => __DIR__ . '/../..' . '/src/Logic/Model/Meal.php',
         'src\\Persistence\\ConfigurationDataSource' => __DIR__ . '/../..' . '/src/Persistence/ConfigurationDataSource.php',
+        'src\\Persistence\\Exceptions\\ConfigurationLoadingException' => __DIR__ . '/../..' . '/src/Persistence/Exceptions/ConfigurationLoadingException.php',
+        'src\\Persistence\\Exceptions\\NoMealsScrapedException' => __DIR__ . '/../..' . '/src/Persistence/Exceptions/NoMealsScrapedException.php',
         'src\\Persistence\\MensaHTWTreskowalleeScraper' => __DIR__ . '/../..' . '/src/Persistence/MensaHTWTreskowalleeScraper.php',
+        'src\\Presentation\\ApplicationRunner' => __DIR__ . '/../..' . '/src/Presentation/ApplicationRunner.php',
         'src\\Presentation\\DiscordWebhookSender' => __DIR__ . '/../..' . '/src/Presentation/DiscordWebhookSender.php',
+        'src\\Presentation\\Logger\\LogMessageType' => __DIR__ . '/../..' . '/src/Presentation/Logger/LogMessageType.php',
+        'src\\Presentation\\Logger\\Logger' => __DIR__ . '/../..' . '/src/Presentation/Logger/Logger.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

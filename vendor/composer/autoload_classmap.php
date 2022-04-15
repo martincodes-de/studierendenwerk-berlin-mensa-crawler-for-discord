@@ -354,6 +354,11 @@ return array(
     'src\\Logic\\Converter\\PriceConverter' => $baseDir . '/src/Logic/Converter/PriceConverter.php',
     'src\\Logic\\Model\\Meal' => $baseDir . '/src/Logic/Model/Meal.php',
     'src\\Persistence\\ConfigurationDataSource' => $baseDir . '/src/Persistence/ConfigurationDataSource.php',
+    'src\\Persistence\\Exceptions\\ConfigurationLoadingException' => $baseDir . '/src/Persistence/Exceptions/ConfigurationLoadingException.php',
+    'src\\Persistence\\Exceptions\\NoMealsScrapedException' => $baseDir . '/src/Persistence/Exceptions/NoMealsScrapedException.php',
     'src\\Persistence\\MensaHTWTreskowalleeScraper' => $baseDir . '/src/Persistence/MensaHTWTreskowalleeScraper.php',
+    'src\\Presentation\\ApplicationRunner' => $baseDir . '/src/Presentation/ApplicationRunner.php',
     'src\\Presentation\\DiscordWebhookSender' => $baseDir . '/src/Presentation/DiscordWebhookSender.php',
+    'src\\Presentation\\Logger\\LogMessageType' => $baseDir . '/src/Presentation/Logger/LogMessageType.php',
+    'src\\Presentation\\Logger\\Logger' => $baseDir . '/src/Presentation/Logger/Logger.php',
 );
