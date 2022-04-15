@@ -85,14 +85,13 @@ final class DiscordWebhookSender
         return [
             "name" => "studierendenWERK BERLIN",
             "url" => $mealPlanWebsite,
-            "icon_url" => "https://www.stw.berlin/favicon.ico",
         ];
     }
 
 
     private function generateFooter(): array {
         return [
-            "text" => "Klicke auf \"studierendenWERK BERLIN\", um zum ganzen Speiseplan zu kommen.",
+            "text" => "Klicke oben auf \"studierendenWERK BERLIN\", um zum ganzen Speiseplan zu kommen.",
         ];
     }
 }
