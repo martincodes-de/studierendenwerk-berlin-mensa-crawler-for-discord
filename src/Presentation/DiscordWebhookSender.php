@@ -20,8 +20,8 @@ final class DiscordWebhookSender
     public function sendWebhook(array $meals): void
     {
         $this->httpClient->post($this->webHookUrl, [
-            "form_params" => [
-                "content" => $this->generateContentLine($meals),
+            "json" => [
+                "content" => $this->generateContentLine(),
                 "embeds" => [
                     [
                         "fields" => $this->generateEmbedFields($meals)
@@ -31,23 +31,16 @@ final class DiscordWebhookSender
         ]);
     }
 
-    /**
-     * @param Meal[] $meals
-     * @return string
-     */
-    private function generateContentLine(array $meals): string
+    private function generateContentLine(): string
     {
         $date = date("d.m.Y");
-        $content = "\n\nHauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n\n";
-
-        foreach ($meals as $meal) {
-            $content .= ":fork_knife_plate: {$meal->title}: {$meal->price} \n";
-        }
-        $content .= "\n\n";
-
-        return $content;
+        return "\n\nHauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n";
     }
 
+    /**
+     * @param Meal[] $meals
+     * @return array
+     */
     private function generateEmbedFields(array $meals): array
     {
         $mealFields = [];
