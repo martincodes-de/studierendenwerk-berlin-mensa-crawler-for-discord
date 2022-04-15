@@ -6,7 +6,7 @@ namespace src\Persistence;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class StudierendenwerkBerlinScraper
+class MensaHTWTreskowalleeScraper
 {
     public function __construct(
         private Crawler $crawler,
