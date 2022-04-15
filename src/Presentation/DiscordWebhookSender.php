@@ -38,11 +38,12 @@ final class DiscordWebhookSender
     private function generateContentLine(array $meals): string
     {
         $date = date("d.m.Y");
-        $content = "Hauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n\n";
+        $content = "\n\nHauptgerichte für heute, den **{$date}** der HTW-Mensa Treskowallee: \n\n";
 
         foreach ($meals as $meal) {
-            $content .= ":fork_knife_plate: **{$meal->title}**: {$meal->price} \n";
+            $content .= ":fork_knife_plate: {$meal->title}: {$meal->price} \n";
         }
+        $content .= "\n\n";
 
         return $content;
     }
