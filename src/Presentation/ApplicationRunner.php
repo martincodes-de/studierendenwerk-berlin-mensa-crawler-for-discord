@@ -2,6 +2,7 @@
 
 namespace src\Presentation;
 
+use GuzzleHttp\Exception\GuzzleException;
 use src\Logic\Converter\MealConverter;
 use src\Persistence\ConfigurationDataSource;
 use src\Persistence\Exceptions\NoMealsScrapedException;
@@ -34,7 +35,7 @@ final class ApplicationRunner
             }, $scrapedMeals);
 
             $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getScrapedWebsiteUrl());
-        } catch (NoMealsScrapedException $e) {
+        } catch (NoMealsScrapedException | GuzzleException $e) {
             $this->logger->write(LogMessageType::ERROR, $e->getMessage());
         }
     }
@@ -47,6 +48,7 @@ final class ApplicationRunner
             "Wednesday",
             "Thursday",
             "Friday",
+            "Saturday",
         ];
 
         return in_array($day, $weekdays);
