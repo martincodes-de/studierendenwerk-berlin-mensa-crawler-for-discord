@@ -17,7 +17,13 @@ final class DiscordWebhookSender
     {
     }
 
-    public function sendWebhook(array $meals, $mealPlanUrl): void
+    /**
+     * @param Meal[] $meals
+     * @param string $mealPlanUrl
+     * @return void
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function sendWebhook(array $meals, string $mealPlanUrl): void
     {
         $this->httpClient->post($this->webHookUrl, [
             "json" => [
@@ -64,7 +70,7 @@ final class DiscordWebhookSender
 
     /**
      * @param Meal[] $meals
-     * @return array
+     * @return array<Int, array<String, String>>
      */
     private function generateEmbedFields(array $meals): array
     {
@@ -80,7 +86,11 @@ final class DiscordWebhookSender
         return $mealFields;
     }
 
-    private function generateAuthor($mealPlanWebsite): array
+    /**
+     * @param string $mealPlanWebsite
+     * @return string[]
+     */
+    private function generateAuthor(string $mealPlanWebsite): array
     {
         return [
             "name" => "studierendenWERK BERLIN",
@@ -89,6 +99,9 @@ final class DiscordWebhookSender
     }
 
 
+    /**
+     * @return string[]
+     */
     private function generateFooter(): array {
         return [
             "text" => "Klicke oben auf \"studierendenWERK BERLIN\", um zum ganzen Speiseplan zu kommen.",

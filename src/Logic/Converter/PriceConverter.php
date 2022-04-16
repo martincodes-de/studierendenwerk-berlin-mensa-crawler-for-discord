@@ -6,7 +6,7 @@ namespace src\Logic\Converter;
 
 final class PriceConverter
 {
-    public function getPriceForStudents($prices): string
+    public function getPriceForStudents(string $prices): string
     {
         $cleanedPrices = $this->getCleanedPrices($prices);
         $priceList = $this->getSinglePrices($cleanedPrices);
@@ -19,6 +19,11 @@ final class PriceConverter
         return str_replace("€ ", "", $prices);
     }
 
+
+    /**
+     * @param string $prices
+     * @return String[]
+     */
     private function getSinglePrices(string $prices): array
     {
         return explode("/", $prices);

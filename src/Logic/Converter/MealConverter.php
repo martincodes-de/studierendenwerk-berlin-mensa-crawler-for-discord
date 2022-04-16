@@ -14,6 +14,10 @@ final class MealConverter
     {
     }
 
+    /**
+     * @param array<string, string> $meal
+     * @return Meal
+     */
     public function convertToMeal(array $meal): Meal
     {
         $priceForStudents = $this->priceConverter->getPriceForStudents($meal["prices"]);

@@ -17,8 +17,9 @@ final class MensaHTWTreskowalleeScraper
 
     /**
      * @throws NoMealsScrapedException
+     * @return array<Int, array<String, String>>
      */
-    public function scrapeMainMeals()
+    public function scrapeMainMeals(): array
     {
         $mainMealsSection = $this->crawler->filter("div.splGroupWrapper:nth-child(6)");
         $rawMeals = $mainMealsSection->filter(".splMeal");

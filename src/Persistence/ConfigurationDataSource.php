@@ -29,8 +29,9 @@ final class ConfigurationDataSource
 
     /**
      * @throws Exception
+     * @return array<String, String>
      */
-    private function readConfiguration($configUrl): array
+    private function readConfiguration(string $configUrl): array
     {
         $configuration = parse_ini_file($configUrl);
 
@@ -41,6 +42,11 @@ final class ConfigurationDataSource
         return $configuration;
     }
 
+
+    /**
+     * @param array<String, String> $configuration
+     * @return void
+     */
     private function setConfiguration(array $configuration): void {
         $this->discordWebhookUrl = $configuration["discord_webhook_url"];
         $this->scrapedWebsiteUrl = $configuration["studierendenwerk_mensa_website"];
