@@ -42,15 +42,6 @@ final class ApplicationRunner
 
     private function isWeekday(string $day): bool
     {
-        $weekdays = [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-        ];
-
-        return in_array($day, $weekdays);
+        return in_array($day, $this->configuration->getDaysToFetch());
     }
 }

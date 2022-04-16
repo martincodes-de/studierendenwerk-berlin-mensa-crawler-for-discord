@@ -11,6 +11,9 @@ final class ConfigurationDataSource
     private ?string $mensaWebsiteUrl = null;
     private ?string $discordWebhookUrl = null;
 
+    /*** @var String[] */
+    private array $daysToFetch = [];
+
     public function __construct()
     {
         $configuration = $this->readConfiguration($this->configurationUrl);
@@ -25,6 +28,14 @@ final class ConfigurationDataSource
     public function getDiscordWebhookUrl(): string
     {
         return $this->discordWebhookUrl ?? "";
+    }
+
+    /**
+     * @return String[]
+     */
+    public function getDaysToFetch(): array
+    {
+        return $this->daysToFetch;
     }
 
     /**
@@ -50,5 +61,6 @@ final class ConfigurationDataSource
     private function setConfiguration(array $configuration): void {
         $this->discordWebhookUrl = $configuration["discord_webhook_url"];
         $this->mensaWebsiteUrl = $configuration["studierendenwerk_berlin_mensa_website"];
+        $this->daysToFetch = explode(",", $configuration["days_to_fetch"]);
     }
 }
