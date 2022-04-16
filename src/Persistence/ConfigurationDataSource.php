@@ -17,14 +17,14 @@ final class ConfigurationDataSource
         $this->setConfiguration($configuration);
     }
 
-    public function getScrapedWebsiteUrl(): ?string
+    public function getScrapedWebsiteUrl(): string
     {
-        return $this->scrapedWebsiteUrl;
+        return $this->scrapedWebsiteUrl ?? "";
     }
 
-    public function getDiscordWebhookUrl(): ?string
+    public function getDiscordWebhookUrl(): string
     {
-        return $this->discordWebhookUrl;
+        return $this->discordWebhookUrl ?? "";
     }
 
     /**
