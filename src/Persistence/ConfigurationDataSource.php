@@ -49,6 +49,6 @@ final class ConfigurationDataSource
      */
     private function setConfiguration(array $configuration): void {
         $this->discordWebhookUrl = $configuration["discord_webhook_url"];
-        $this->scrapedWebsiteUrl = $configuration["studierendenwerk_mensa_website"];
+        $this->scrapedWebsiteUrl = $configuration["studierendenwerk_berlin_mensa_website"];
     }
 }
