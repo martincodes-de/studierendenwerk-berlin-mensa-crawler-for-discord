@@ -2,7 +2,7 @@
 
 namespace src\Presentation\Logger;
 
-class Logger
+final class Logger
 {
     private readonly string $logfilePath;
 

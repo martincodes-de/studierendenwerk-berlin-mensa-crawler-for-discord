@@ -5,7 +5,7 @@ namespace src\Persistence\Exceptions;
 use Exception;
 use Throwable;
 
-class ConfigurationLoadingException extends Exception
+final class ConfigurationLoadingException extends Exception
 {
     public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
     {

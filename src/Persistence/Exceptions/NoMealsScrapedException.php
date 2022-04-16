@@ -5,7 +5,7 @@ namespace src\Persistence\Exceptions;
 use Exception;
 use Throwable;
 
-class NoMealsScrapedException extends Exception
+final class NoMealsScrapedException extends Exception
 {
     public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
     {
