@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8c0284e76bf8e1818898b4b4003825328f4126ff',
+        'reference' => '5c5c3a9d35063e6cb01ce791b8ec6d725c79e7a7',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8c0284e76bf8e1818898b4b4003825328f4126ff',
+            'reference' => '5c5c3a9d35063e6cb01ce791b8ec6d725c79e7a7',
             'dev_requirement' => false,
         ),
         'fabpot/goutte' => array(
@@ -66,6 +66,15 @@
             'provided' => array(
                 0 => '*',
             ),
+        ),
+        'phpstan/phpstan' => array(
+            'pretty_version' => '1.5.6',
+            'version' => '1.5.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpstan/phpstan',
+            'aliases' => array(),
+            'reference' => '799dd8c2d2c9c704bb55d2078078cb970cf0f6d1',
+            'dev_requirement' => true,
         ),
         'psr/container' => array(
             'pretty_version' => '2.0.2',

@@ -11,5 +11,8 @@
             "src\\Persistence\\": "src/Persistence/",
             "src\\Logic\\": "src/Logic/"
         }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.5"
     }
 }
