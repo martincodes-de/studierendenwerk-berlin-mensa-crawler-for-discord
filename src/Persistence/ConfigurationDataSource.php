@@ -8,7 +8,7 @@ use src\Persistence\Exceptions\ConfigurationLoadingException;
 final class ConfigurationDataSource
 {
     private string $configurationUrl = __DIR__."/../../config.ini";
-    private ?string $scrapedWebsiteUrl = null;
+    private ?string $mensaWebsiteUrl = null;
     private ?string $discordWebhookUrl = null;
 
     public function __construct()
@@ -17,9 +17,9 @@ final class ConfigurationDataSource
         $this->setConfiguration($configuration);
     }
 
-    public function getScrapedWebsiteUrl(): string
+    public function getMensaWebsiteUrl(): string
     {
-        return $this->scrapedWebsiteUrl ?? "";
+        return $this->mensaWebsiteUrl ?? "";
     }
 
     public function getDiscordWebhookUrl(): string
@@ -49,6 +49,6 @@ final class ConfigurationDataSource
      */
     private function setConfiguration(array $configuration): void {
         $this->discordWebhookUrl = $configuration["discord_webhook_url"];
-        $this->scrapedWebsiteUrl = $configuration["studierendenwerk_berlin_mensa_website"];
+        $this->mensaWebsiteUrl = $configuration["studierendenwerk_berlin_mensa_website"];
     }
 }

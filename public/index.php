@@ -17,7 +17,7 @@ $configuration = new ConfigurationDataSource();
 $logger = new Logger();
 
 $client = new Client();
-$crawler = $client->request("GET", $configuration->getScrapedWebsiteUrl());
+$crawler = $client->request("GET", $configuration->getMensaWebsiteUrl());
 
 $scraper = new MensaHTWTreskowalleeScraper($crawler);
 

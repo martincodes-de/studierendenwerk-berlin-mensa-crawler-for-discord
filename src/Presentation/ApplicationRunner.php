@@ -34,7 +34,7 @@ final class ApplicationRunner
                 return $this->mealConverter->convertToMeal($meal);
             }, $scrapedMeals);
 
-            $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getScrapedWebsiteUrl());
+            $this->discordWebhookSender->sendWebhook($meals, $this->configuration->getMensaWebsiteUrl());
         } catch (NoMealsScrapedException | GuzzleException $e) {
             $this->logger->write(LogMessageType::ERROR, $e->getMessage());
         }
