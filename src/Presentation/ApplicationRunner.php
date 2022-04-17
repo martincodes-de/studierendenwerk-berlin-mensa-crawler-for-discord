@@ -25,7 +25,7 @@ final class ApplicationRunner
 
     public function start(): void {
         $dayAsWord = date("l");
-        if (!$this->isWeekday($dayAsWord)) {
+        if (!$this->isScheduledDay($dayAsWord)) {
             $this->logger->write(LogMessageType::INFO, "Tryed to scrap meals at {$dayAsWord}, but it's not scheduled.");
             return;
         }
@@ -43,7 +43,7 @@ final class ApplicationRunner
         }
     }
 
-    private function isWeekday(string $day): bool
+    private function isScheduledDay(string $day): bool
     {
         return in_array($day, $this->configuration->getDaysToFetch());
     }
