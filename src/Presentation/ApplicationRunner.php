@@ -6,18 +6,18 @@ use GuzzleHttp\Exception\GuzzleException;
 use src\Logic\Converter\MealConverter;
 use src\Persistence\ConfigurationDataSource;
 use src\Persistence\Exceptions\NoMealsScrapedException;
-use src\Persistence\MensaHTWTreskowalleeScraper;
+use src\Persistence\MensaMealplanScraper;
 use src\Presentation\Logger\Logger;
 use src\Presentation\Logger\LogMessageType;
 
 final class ApplicationRunner
 {
     public function __construct(
-        private MensaHTWTreskowalleeScraper $scraper,
-        private MealConverter $mealConverter,
-        private DiscordWebhookSender $discordWebhookSender,
+        private MensaMealplanScraper    $scraper,
+        private MealConverter           $mealConverter,
+        private DiscordWebhookSender    $discordWebhookSender,
         private ConfigurationDataSource $configuration,
-        private Logger $logger,
+        private Logger                  $logger,
     )
     {
         date_default_timezone_set("Europe/Berlin");

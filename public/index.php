@@ -5,7 +5,7 @@ use GuzzleHttp\Client as HttpClient;
 use src\Logic\Converter\MealConverter;
 use src\Logic\Converter\PriceConverter;
 use src\Persistence\ConfigurationDataSource;
-use src\Persistence\MensaHTWTreskowalleeScraper;
+use src\Persistence\MensaMealplanScraper;
 use src\Presentation\ApplicationRunner;
 use src\Presentation\DiscordWebhookSender;
 use src\Presentation\Logger\Logger;
@@ -20,17 +20,14 @@ try {
 
     $client = new Client();
     $crawler = $client->request("GET", $configuration->getMensaWebsiteUrl());
-
-    $scraper = new MensaHTWTreskowalleeScraper($crawler);
+    $scraper = new MensaMealplanScraper($crawler);
 
     $httpClient = new HttpClient();
     $priceConverter = new PriceConverter();
     $mealConverter = new MealConverter($priceConverter);
-
     $discordWebhookSender = new DiscordWebhookSender($configuration->getDiscordWebhookUrl(), $httpClient);
 
     $appRunner = new ApplicationRunner($scraper, $mealConverter, $discordWebhookSender, $configuration, $logger);
-
     $appRunner->start();
 } catch (Exception $e) {
     $logger->write(LogMessageType::ERROR, $e->getMessage());

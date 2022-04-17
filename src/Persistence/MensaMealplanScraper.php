@@ -7,7 +7,7 @@ namespace src\Persistence;
 use src\Persistence\Exceptions\NoMealsScrapedException;
 use Symfony\Component\DomCrawler\Crawler;
 
-final class MensaHTWTreskowalleeScraper
+final class MensaMealplanScraper
 {
     public function __construct(
         private Crawler $crawler,
