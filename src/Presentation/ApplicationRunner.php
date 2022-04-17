@@ -25,7 +25,10 @@ final class ApplicationRunner
 
     public function start(): void {
         $dayAsWord = date("l");
-        if (!$this->isWeekday($dayAsWord)) return;
+        if (!$this->isWeekday($dayAsWord)) {
+            $this->logger->write(LogMessageType::INFO, "Tryed to scrap meals at {$dayAsWord}, but it's not scheduled.");
+            return;
+        }
 
         try {
             $scrapedMeals = $this->scraper->scrapeMainMeals();
