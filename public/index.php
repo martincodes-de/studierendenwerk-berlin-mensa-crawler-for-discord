@@ -13,25 +13,25 @@ use src\Presentation\Logger\LogMessageType;
 
 require_once __DIR__."/../vendor/autoload.php";
 
-$configuration = new ConfigurationDataSource();
 $logger = new Logger();
 
-$client = new Client();
-$crawler = $client->request("GET", $configuration->getMensaWebsiteUrl());
-
-$scraper = new MensaHTWTreskowalleeScraper($crawler);
-
-$httpClient = new HttpClient();
-$priceConverter = new PriceConverter();
-$mealConverter = new MealConverter($priceConverter);
-
-$discordWebhookSender = new DiscordWebhookSender($configuration->getDiscordWebhookUrl(), $httpClient);
-
-$appRunner = new ApplicationRunner($scraper, $mealConverter, $discordWebhookSender, $configuration, $logger);
-
 try {
+    $configuration = new ConfigurationDataSource();
+
+    $client = new Client();
+    $crawler = $client->request("GET", $configuration->getMensaWebsiteUrl());
+
+    $scraper = new MensaHTWTreskowalleeScraper($crawler);
+
+    $httpClient = new HttpClient();
+    $priceConverter = new PriceConverter();
+    $mealConverter = new MealConverter($priceConverter);
+
+    $discordWebhookSender = new DiscordWebhookSender($configuration->getDiscordWebhookUrl(), $httpClient);
+
+    $appRunner = new ApplicationRunner($scraper, $mealConverter, $discordWebhookSender, $configuration, $logger);
+
     $appRunner->start();
 } catch (Exception $e) {
     $logger->write(LogMessageType::ERROR, $e->getMessage());
-    die($e->getMessage());
 }
