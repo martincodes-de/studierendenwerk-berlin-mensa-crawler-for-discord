@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/studienwerk-berlin-mensa-crawler-for-discord.iml" filepath="$PROJECT_DIR$/.idea/studienwerk-berlin-mensa-crawler-for-discord.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/studierendenwerk-berlin-mensa-crawler-for-discord.iml" filepath="$PROJECT_DIR$/.idea/studierendenwerk-berlin-mensa-crawler-for-discord.iml" />
     </modules>
   </component>
 </project>

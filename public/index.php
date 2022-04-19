@@ -1,20 +1,34 @@
 <?php
 
 use Goutte\Client;
-use src\Presentation\PriceConverter;
-use src\Presentation\ViewModel\Meal;
+use GuzzleHttp\Client as HttpClient;
+use src\Logic\Converter\MealConverter;
+use src\Logic\Converter\PriceConverter;
+use src\Persistence\ConfigurationDataSource;
+use src\Persistence\MensaMealplanScraper;
+use src\Presentation\ApplicationRunner;
+use src\Presentation\DiscordWebhookSender;
+use src\Presentation\Logger\Logger;
+use src\Presentation\Logger\LogMessageType;
 
-require_once "../vendor/autoload.php";
+require_once __DIR__."/../vendor/autoload.php";
 
-$client = new Client();
-$scraper = $client->request("GET", "https://www.stw.berlin/mensen/einrichtungen/hochschule-f%C3%BCr-technik-und-wirtschaft-berlin/mensa-htw-treskowallee.html");
+$logger = new Logger();
 
-$mainMealsSection = $scraper->filter("div.splGroupWrapper:nth-child(6)");
-$meals = $mainMealsSection->filter(".splMeal");
+try {
+    $configuration = new ConfigurationDataSource();
 
-$meals->each(function($node) {
-    $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
-    $mealPrices = $node->filter("div.text-right")->text();
+    $client = new Client();
+    $crawler = $client->request("GET", $configuration->getMensaWebsiteUrl());
+    $scraper = new MensaMealplanScraper($crawler);
 
-    $meal = new Meal($mealTitle, PriceConverter::getPriceForStudents($mealPrices));
-});
+    $httpClient = new HttpClient();
+    $priceConverter = new PriceConverter();
+    $mealConverter = new MealConverter($priceConverter);
+    $discordWebhookSender = new DiscordWebhookSender($configuration->getDiscordWebhookUrl(), $httpClient);
+
+    $appRunner = new ApplicationRunner($scraper, $mealConverter, $discordWebhookSender, $configuration, $logger);
+    $appRunner->start();
+} catch (Exception $e) {
+    $logger->write(LogMessageType::ERROR, $e->getMessage());
+}
