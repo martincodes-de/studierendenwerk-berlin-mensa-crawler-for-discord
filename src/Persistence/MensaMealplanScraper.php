@@ -42,4 +42,18 @@ final class MensaMealplanScraper
 
         return $meals;
     }
+
+    private function getMainMealsSection(): ?Crawler
+    {
+        $mainMealsSection = null;
+
+        $mealsSections = $this->crawler->filter("div.splGroupWrapper");
+        $mealsSections->each(function($section) use (&$mainMealsSection) {
+            if ($section->filter(".splGroup")->text() == "Essen") {
+                $mainMealsSection = $section;
+            }
+        });
+
+        return $mainMealsSection;
+    }
 }
