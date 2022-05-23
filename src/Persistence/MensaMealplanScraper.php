@@ -21,9 +21,12 @@ final class MensaMealplanScraper
      */
     public function scrapeMainMeals(): array
     {
-        $mainMealsSection = $this->crawler->filter("div.splGroupWrapper:nth-child(6)");
-        $rawMeals = $mainMealsSection->filter(".splMeal");
+        $mainMealsSection = $this->getMainMealsSection();
+        if (is_null($mainMealsSection)) {
+            throw new NoMealsScrapedException("No meals scraped because the main meals section was not found (returned null)");
+        }
 
+        $rawMeals = $mainMealsSection->filter(".splMeal");
         if ($rawMeals->count() < 1) {
             throw new NoMealsScrapedException("No meals scraped.");
         }
