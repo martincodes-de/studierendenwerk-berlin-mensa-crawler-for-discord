@@ -13,6 +13,7 @@ With meals:
 - https://martin.techniknews.biz/htw-scraper-test/test1.html
 - https://martin.techniknews.biz/htw-scraper-test/test2.html
 - https://martin.techniknews.biz/htw-scraper-test/test3.html
+- https://martin.techniknews.biz/htw-scraper-test/test4.html
 
 Without meals:
 - https://martin.techniknews.biz/htw-scraper-test/test-no1.html
