@@ -34,7 +34,7 @@ final class MensaMealplanScraper
         $meals = [];
 
         $rawMeals->each(function($node) use (&$meals) {
-            $mealTitle = $node->filter("div.col-xs-6.col-md-6")->filter("span")->text();
+            $mealTitle = $node->filter("div.col-xs-6.col-md-5")->filter("span")->text();
             $mealPrices = $node->filter("div.text-right")->text();
 
             $meals[] = [
