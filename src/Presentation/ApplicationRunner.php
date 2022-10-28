@@ -26,7 +26,7 @@ final class ApplicationRunner
     public function start(): void {
         $dayAsWord = date("l");
         if (!$this->isScheduledDay($dayAsWord)) {
-            $this->logger->write(LogMessageType::INFO, "Tryed to scrap meals at {$dayAsWord}, but it's not scheduled.");
+            $this->logger->write(LogMessageType::INFO, "Tried to scrap meals at {$dayAsWord}, but it's not scheduled.");
             return;
         }
 
