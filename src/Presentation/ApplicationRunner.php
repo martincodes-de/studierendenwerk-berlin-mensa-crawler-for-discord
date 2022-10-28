@@ -32,7 +32,7 @@ final class ApplicationRunner
             return;
         }
 
-        if (!$this->isCrawlingPaused(new DateTime(), $this->configuration->getPausedUntil())) {
+        if ($this->isCrawlingPaused(new DateTime(), $this->configuration->getPausedUntil())) {
             $pausedUntil = $this->configuration->getPausedUntil()->format('d.m.Y');
             $this->logger->write(LogMessageType::INFO, "Tried to scrap meals, but it's paused until {$pausedUntil}.");
             return;
