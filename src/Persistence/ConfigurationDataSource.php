@@ -2,6 +2,8 @@
 
 namespace src\Persistence;
 
+use DateTime;
+use DateTimeInterface;
 use Exception;
 use src\Persistence\Exceptions\ConfigurationLoadingException;
 
@@ -10,6 +12,7 @@ final class ConfigurationDataSource
     private string $configurationUrl = __DIR__."/../../config.ini";
     private ?string $mensaWebsiteUrl = null;
     private ?string $discordWebhookUrl = null;
+    private ?DateTimeInterface $pauseUntil = null;
 
     /*** @var String[] */
     private array $daysToFetch = [];
@@ -38,6 +41,11 @@ final class ConfigurationDataSource
         return $this->daysToFetch;
     }
 
+    public function getPausedUntil(): ?DateTimeInterface
+    {
+        return $this->pauseUntil;
+    }
+
     /**
      * @throws Exception
      * @return array<String, String>
@@ -47,7 +55,7 @@ final class ConfigurationDataSource
         $configuration = parse_ini_file($configUrl);
 
         if ($configuration === false) {
-            throw new ConfigurationLoadingException("Configuration.ini can't be loaded.");
+            throw new ConfigurationLoadingException("config.ini can't be loaded.");
         }
 
         return $configuration;
@@ -62,5 +70,19 @@ final class ConfigurationDataSource
         $this->discordWebhookUrl = $configuration["discord_webhook_url"];
         $this->mensaWebsiteUrl = $configuration["studierendenwerk_berlin_mensa_website"];
         $this->daysToFetch = explode(",", $configuration["days_to_fetch"]);
+        $this->pauseUntil = $this->extractPauseUntilFromRawConfigurationFile($configuration["pause_crawling_until"]);
+    }
+
+    private function extractPauseUntilFromRawConfigurationFile(?string $pauseUntilConfigurationEntry): ?DateTimeInterface
+    {
+        if (empty($pauseUntilConfigurationEntry)) {
+            return null;
+        }
+
+        try {
+            return new DateTime($pauseUntilConfigurationEntry);
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }
