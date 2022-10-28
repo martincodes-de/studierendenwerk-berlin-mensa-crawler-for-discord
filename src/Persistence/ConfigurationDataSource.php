@@ -41,6 +41,11 @@ final class ConfigurationDataSource
         return $this->daysToFetch;
     }
 
+    public function getPausedUntil(): ?DateTimeInterface
+    {
+        return $this->pauseUntil;
+    }
+
     /**
      * @throws Exception
      * @return array<String, String>

@@ -2,6 +2,8 @@
 
 namespace src\Presentation;
 
+use DateTime;
+use DateTimeInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use src\Logic\Converter\MealConverter;
 use src\Persistence\ConfigurationDataSource;
@@ -26,7 +28,13 @@ final class ApplicationRunner
     public function start(): void {
         $dayAsWord = date("l");
         if (!$this->isScheduledDay($dayAsWord)) {
-            $this->logger->write(LogMessageType::INFO, "Tried to scrap meals at {$dayAsWord}, but it's not scheduled.");
+            $this->logger->write(LogMessageType::INFO, "Tried to scrap meals at {$dayAsWord}, but it's not a scheduled day.");
+            return;
+        }
+
+        if (!$this->isCrawlingPaused(new DateTime(), $this->configuration->getPausedUntil())) {
+            $pausedUntil = $this->configuration->getPausedUntil()->format('d.m.Y');
+            $this->logger->write(LogMessageType::INFO, "Tried to scrap meals, but it's paused until {$pausedUntil}.");
             return;
         }
 
@@ -46,5 +54,18 @@ final class ApplicationRunner
     private function isScheduledDay(string $day): bool
     {
         return in_array($day, $this->configuration->getDaysToFetch());
+    }
+
+    private function isCrawlingPaused(DateTimeInterface $today, ?DateTimeInterface $dateUntilPaused): bool
+    {
+        if (is_null($dateUntilPaused)) {
+            return false;
+        }
+
+        if ($today->getTimestamp() > $dateUntilPaused->getTimestamp()) {
+            return false;
+        }
+
+        return true;
     }
 }
