@@ -15,10 +15,6 @@ require_once __DIR__."/../vendor/autoload.php";
 
 $logger = new Logger();
 
-if (http_response_code() !== false) {
-    echo "<style> body { background-color: black } </style>";
-}
-
 try {
     $configuration = new ConfigurationDataSource();
 
